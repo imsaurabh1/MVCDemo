@@ -21,5 +21,6 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
-
+    - name: Test
+      run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
     
