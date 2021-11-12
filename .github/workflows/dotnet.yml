@@ -23,4 +23,17 @@ jobs:
       run: dotnet build MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
+      #Prepare the code for sending to Scan Zip the Code
+    - name: Zip the code
+      uses: papeloto/action-zip@v1
+      with:
+       files: GitHubMVCDemo
+       recursive: false
+       dest: GitHubMVCDemo.zip
+
+#Send the code for Scan 
+    - name: Send for Scan
+      run:  move GitHubMVCDemo.zip D:\a\MVCDemo\MVCDemo
+    
+
     
