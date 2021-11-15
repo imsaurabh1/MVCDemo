@@ -21,6 +21,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" 
+      run: dotnet build MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:SkipInvalidConfigurations=true  
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
