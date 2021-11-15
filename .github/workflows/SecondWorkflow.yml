@@ -21,6 +21,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build MVCDemo.sln /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
     - name: Test
       run: dotnet test --no-build --verbosity normal
