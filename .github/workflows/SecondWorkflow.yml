@@ -24,7 +24,7 @@ jobs:
       uses: EasyDesk/action-dotnet-build@v1
       with:
           # (Optional) Additional arguments for dotnet build.
-          build-args: -v normal
+          build-args: /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
 
           # (Optional) Build configuration, defaults to 'Release'
           # If the version starts with the 'v' prefix, it will be removed to conform to the requirements of dotnet pack.
