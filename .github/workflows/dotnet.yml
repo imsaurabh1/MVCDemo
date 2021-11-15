@@ -1,4 +1,4 @@
-name: .NET
+name: GitHub Actions MVC
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  MVC-Job:
 
     runs-on: windows-latest
 
