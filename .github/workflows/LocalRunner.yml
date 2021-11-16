@@ -17,8 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    
+    - name: Restore dependencies
+      run: dotnet restore
     - name: Build
-      run: dotnet build MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
+      run: dotnet MSBuild.exe MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
