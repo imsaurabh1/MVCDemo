@@ -7,10 +7,13 @@ on:
 
 jobs:
   MVC-Job:
-
-    runs-on: [self-hosted]
-
-    steps:
+   env:
+    VRWhere_HOME: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64'
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+   
+   runs-on: [self-hosted]
+  
+   steps:
     - uses: actions/checkout@v2
     - name: Setup VSWhere.exe
       uses: warrenbuckley/Setup-VSWhere@v1
