@@ -35,9 +35,7 @@ jobs:
            nuget-version: '5.x'
   
     - name: Restore NuGet Packages
-      run: |
-           cd MVCDemo ;
-           nuget restore MVCDemo.csproj ;
+      run: nuget restore MVCDemo.sln ;
     - name: Build
       run: dotnet build MVCDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
     - name: Test
