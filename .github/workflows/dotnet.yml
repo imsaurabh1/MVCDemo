@@ -37,7 +37,7 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore MVCDemo.sln ;
     - name: Build
-      run: MSBuild.exe "MVCDemo.sln" /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
+      run: dotnet build "MVCDemo.sln" 
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
       #Prepare the code for sending to Scan Zip the Code
