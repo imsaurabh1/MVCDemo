@@ -5,9 +5,9 @@ on:
 
 jobs:
   build:
-   env:
-    VRWhere_HOME: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64\vswhere.exe'
-    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+   #env:
+    #VRWhere_HOME: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64\vswhere.exe'
+    #ACTIONS_ALLOW_UNSECURE_COMMANDS: true
    
    runs-on: [self-hosted]
 
@@ -15,14 +15,14 @@ jobs:
     - name: Code Checkout
       uses: actions/checkout@v2
       
-    - name: Setup VSWhere.exe
-      uses: warrenbuckley/Setup-VSWhere@v1
+    #- name: Setup VSWhere.exe
+     # uses: warrenbuckley/Setup-VSWhere@v1
       
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
       with:
         vs-version: '[16.4,16.5)'
-        vswhere-path: ${{ env.VRWhere_HOME }}
+       # vswhere-path: ${{ env.VRWhere_HOME }}
         
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5  
