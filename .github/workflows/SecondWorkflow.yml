@@ -1,33 +1,38 @@
-name: MVC_two
+name: MVC_MSbuild
 
 on:
    workflow_dispatch:
 
 jobs:
   build:
+   env:
+    VRWhere_HOME: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64'
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+   
+   runs-on: [self-hosted]
 
-    runs-on: windows-latest
-
-    steps:
+   steps:
     - name: Code Checkout
       uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      
+    - name: Setup VSWhere.exe
+      uses: warrenbuckley/Setup-VSWhere@v1
+      
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
       with:
-        dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore
+        vs-version: '[16.4,16.5)'
+        
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5  
+      with:
+           nuget-version: '5.x'
+  
+    - name: Restore NuGet Packages
+      run: nuget restore MVCDemo.sln ;
+      
     - name: Build
-      uses: EasyDesk/action-dotnet-build@v1
-      with:
-          # (Optional) Additional arguments for dotnet build.
-          build-args: /p:Platform=\"Any CPU\" /p:DeployOnBuild=true /p:WebPublishMethod=Package 	/p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=..\\ArtifactStaging
-
-          # (Optional) Build configuration, defaults to 'Release'
-          # If the version starts with the 'v' prefix, it will be removed to conform to the requirements of dotnet pack.
-          build-configuration: Release
-
-          # (Optional) The path of the project to build; if omitted, the whole solution is built
-          path: MVCDemo.sln
+      run: msbuild build "MVCDemo.sln" 
+      
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
