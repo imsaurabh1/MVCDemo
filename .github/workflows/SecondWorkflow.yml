@@ -23,11 +23,18 @@ jobs:
 
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
+      id: setup_msbuild
       with:
-        vs-version: '[16.4,16.5)'
+        vs-version: "[16.4,)"
         msbuild-architecture: x64
-        vswhere-path: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64\vswhere.exe'
-        
+        #vswhere-path: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64\vswhere.exe'
+    
+    - name: echo msbuild path
+      run: echo "${{ steps.setup_msbuild.outputs.msbuildPath }}"
+
+    - name: echo MSBuild
+      run: msbuild -version
+      
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5  
       with:
