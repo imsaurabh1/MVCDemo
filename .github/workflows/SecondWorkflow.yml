@@ -15,8 +15,8 @@ jobs:
     - name: Code Checkout
       uses: actions/checkout@v2
       
-    #- name: Setup VSWhere.exe
-     # uses: warrenbuckley/Setup-VSWhere@v1
+    - name: Setup VSWhere.exe
+      uses: warrenbuckley/Setup-VSWhere@v1
       
    # - name: Setup MSBuild.exe
     #  uses: warrenbuckley/Setup-MSBuild@v1
