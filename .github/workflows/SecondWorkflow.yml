@@ -52,7 +52,7 @@ jobs:
       run: nuget restore MVCDemo.sln ;
       
     - name: Build
-      run: msbuild build "MVCDemo.sln" 
+      run: msbuild "MVCDemo.sln" 
       
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
