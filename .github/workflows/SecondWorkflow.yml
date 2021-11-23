@@ -15,6 +15,13 @@ jobs:
     - name: Code Checkout
       uses: actions/checkout@v2
       
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+
+    - name: MSBuild
+      working-directory: src
+      run: msbuild MyProject.csproj
+      
     - name: Setup VSWhere.exe
       uses: warrenbuckley/Setup-VSWhere@v1
       
