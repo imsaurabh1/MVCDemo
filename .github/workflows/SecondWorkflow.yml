@@ -60,4 +60,4 @@ jobs:
       run: msbuild "MVCDemo.sln" 
       
     - name: Test
-      run: dotnet test UnitTestProject\
+      run: dotnet test UnitTestProject\ --no-restore
