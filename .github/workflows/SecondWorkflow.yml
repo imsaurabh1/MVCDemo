@@ -16,6 +16,11 @@ jobs:
     - name: Code Checkout
       uses: actions/checkout@v2
       
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
 
@@ -55,4 +60,4 @@ jobs:
       run: msbuild "MVCDemo.sln" 
       
     - name: Test
-      run: dotnet test 
+      run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll
