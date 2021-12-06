@@ -20,6 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
+    - name: Copy MSBuild
+      run: move-Item "C:\Projects\MSBuild" "C:\GitHub\Runner\_work\_tool\" -Force
       
     - name: Setup VSWhere.exe
       uses: warrenbuckley/Setup-VSWhere@v1
