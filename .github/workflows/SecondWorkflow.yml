@@ -26,15 +26,14 @@ jobs:
       
     - name: Setup VSWhere.exe
       uses: warrenbuckley/Setup-VSWhere@v1
-
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1 
-
       
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
       with:
         vswhere-path: 'C:\GitHub\Runner\_work\_tool\vswhere\2.7.1\x64\'
+
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1 
       
    # - name: Setup MSBuild.exe
     #  uses: warrenbuckley/Setup-MSBuild@v1
