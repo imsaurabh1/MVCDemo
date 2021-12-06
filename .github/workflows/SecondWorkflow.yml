@@ -20,30 +20,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-        
-
-
-   # - name: MSBuild
-    #  working-directory: src
-     # run: msbuild MyProject.csproj
       
     - name: Setup VSWhere.exe
       uses: warrenbuckley/Setup-VSWhere@v1
 
-    - name: echo msbuild path
-      run: echo "${{ steps.setup_msbuild.outputs.msbuildPath }}"
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1 
 
-    - name: echo MSBuild
-      run: msbuild -version
       
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
       with:
         vswhere-path: 'C:\GitHub\Runner\_work\_tool\vswhere\2.7.1\x64\'
-
- 
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1 
       
    # - name: Setup MSBuild.exe
     #  uses: warrenbuckley/Setup-MSBuild@v1
@@ -56,6 +44,11 @@ jobs:
         #msbuild-architecture: x64
         #vswhere-path: 'C:\GitHubActions\actions-runner-win-x64-2.284.0\WindowsSystem\_tool\vswhere\2.7.1\x64\vswhere.exe'
     
+    - name: echo msbuild path
+      run: echo "${{ steps.setup_msbuild.outputs.msbuildPath }}"
+
+    - name: echo MSBuild
+      run: msbuild -version
       
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5  
