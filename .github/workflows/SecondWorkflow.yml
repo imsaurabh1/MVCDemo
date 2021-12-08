@@ -80,7 +80,7 @@ jobs:
     - name: Publish Files
       run: |
         if (Test-Path C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\NugetStaging) { Remove-Item C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\NugetStaging -Force -Recurse }  
-        C:\GitHubActions\Runner\WindowsSystem\_tool\nuget.exe\5.11.0\x64\nuget.exe pack C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\MVCDemo.nuspec -Version 2.0 -OutputDirectory C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\NugetStaging
+        C:\GitHubActions\Runner\WindowsSystem\_tool\nuget.exe\5.11.0\x64\nuget.exe pack C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\MVCDemo.nuspec -Version 2.0 -OutputDirectory C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\
       #  nuget source Add -Name "SaurabhPOC" -Source "https://rtfx.aepsc.com/artifactory/libs-release/com/aep/itmp/" -UserName ${{ secrets.ARTIFACTORY_DEPLOY_USERNAME }} -Password ${{ secrets.ARTIFACTORY_DEPLOY_TOKEN }}
      #   nuget push C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\NugetStaging\MVCDemo.2.0.nupkg -Source "https://rtfx.aepsc.com/artifactory/libs-release/com/aep/itmp/" 
 
