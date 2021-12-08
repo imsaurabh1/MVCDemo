@@ -66,6 +66,9 @@ jobs:
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll --no-restore
       
+    - name: Test 2
+      run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
+      
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
       
