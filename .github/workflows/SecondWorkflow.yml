@@ -6,9 +6,9 @@ on:
 jobs:
   build:
    env:
-    VSWhere_PATH: 'C:\GitHub\Runner\_work\_tool\vswhere\2.7.1\x64\vswhere.exe'
+    VSWhere_PATH: 'C:\GitHubActions\Runner\WindowsSystem\_tool\vswhere\2.7.1\x64\vswhere.exe'
     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-    MS_PATH: 'C:\GitHub\Runner\_work\_tool\MSBuild\MSBuild.exe'
+    MS_PATH: 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe'
    
    runs-on: [self-hosted]
 
@@ -30,7 +30,7 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
       with:
-        vswhere-path: 'C:\GitHub\Runner\_work\_tool\vswhere\2.7.1\x64\'
+        vswhere-path: 'C:\GitHubActions\Runner\WindowsSystem\_tool\vswhere\2.7.1\x64\'
 
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1 
