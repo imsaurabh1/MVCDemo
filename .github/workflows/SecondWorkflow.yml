@@ -65,3 +65,11 @@ jobs:
       
     - name: Test
       run: dotnet test UnitTestProject\bin\Debug\UnitTestProject.dll --no-restore
+      
+    - name: Pack
+      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+      
+    - name: Push
+      run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${DEC_PAT}
+      env:      
+        GITHUB_TOKEN: ${{ secrets.DEC_PAT }}
