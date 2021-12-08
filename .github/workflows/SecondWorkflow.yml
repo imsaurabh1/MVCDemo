@@ -72,7 +72,22 @@ jobs:
     #- name: Pack
      # run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
       
-    - name: Push
-      run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${DEC_PAT}
-      env:      
-        GITHUB_TOKEN: ${{ secrets.DEC_PAT }}
+   # - name: Push
+    #  run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${DEC_PAT}
+     # env:      
+      #  GITHUB_TOKEN: ${{ secrets.DEC_PAT }}
+
+    - name: Publish Files
+      run: |
+        if (Test-Path C:\actions-runner\_work\POC_2\POC_2\GitHubActionsPOC\GitHubActionsPOC\NugetStaging) { Remove-Item C:\actions-runner\_work\POC_2\POC_2\GitHubActionsPOC\GitHubActionsPOC\NugetStaging -Force -Recurse }  
+        C:\actions-runner\_work\_tool\nuget.exe\5.11.0\x64\nuget.exe pack C:\actions-runner\_work\POC_2\POC_2\GitHubActionsPOC\GitHubActionsPOC\GitHubActionsPOC.nuspec -Version 2.0 -OutputDirectory C:\actions-runner\_work\POC_2\POC_2\GitHubActionsPOC\GitHubActionsPOC\NugetStaging
+        nuget source Add -Name "SaurabhPOC" -Source "https://rtfx.aepsc.com/artifactory/libs-release/com/aep/itmp/" -UserName ${{ secrets.ARTIFACTORY_DEPLOY_USERNAME }} -Password ${{ secrets.ARTIFACTORY_DEPLOY_TOKEN }}
+        nuget push C:\actions-runner\_work\POC_2\POC_2\GitHubActionsPOC\GitHubActionsPOC\NugetStaging\GitHubActionsPOC.2.0.nupkg -Source "https://rtfx.aepsc.com/artifactory/libs-release/com/aep/itmp/" 
+
+
+
+
+
+
+
+
