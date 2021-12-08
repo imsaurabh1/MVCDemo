@@ -42,6 +42,6 @@
 	-->
 
 	<!-- Add any additional files here manually -->
-	<file src="C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\ArtifactStaging\**"/>
+	<file src="C:\GitHubActions\Runner\WindowsSystem\MVCDemo\MVCDemo\MVCDemo\**"/>
   </files>
 </package>
